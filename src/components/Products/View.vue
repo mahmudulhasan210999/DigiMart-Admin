@@ -12,7 +12,7 @@
                         </template>
                     </Column>
 
-                    <Column field="name" header="Name" :sortable="true" style="min-width:10rem"></Column>
+                    <Column field="name" header="Name" :sortable="true" style="min-width:15rem"></Column>
 
                     <Column :exportable="false" header="Image" :sortable="true" style="min-width:8rem">
                         <template #body="{data}">
@@ -50,7 +50,7 @@
                         </template>
                     </Column>
 
-                    <Column header="Actions" :exportable="false" style="min-width:8rem">
+                    <Column header="Actions" :exportable="false" style="min-width:7rem">
                         <template #body="slotProps">
                             <div class="flex">
                                 <div class="">

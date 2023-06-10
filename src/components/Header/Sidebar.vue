@@ -56,6 +56,13 @@
                     </router-link>
                 </div>
             </div>
+
+            <!-- Orders -->
+            <div class="my-3">
+                <router-link to="/orders">
+                    <p @click="showOrders" :class="{'clicked': $route.meta.isOrderOpen || displayOrder}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex"><i class="pi pi-shopping-cart pr-5" style="font-size: 1.2rem"></i>Orders</p>
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -73,6 +80,7 @@ export default {
             displayDashboard: false,
             displayCategory: false,
             displayProjects: false,
+            displayOrder: false,
             
             showCategoryColor: true,
             categoryCreateColor: false,
@@ -80,7 +88,7 @@ export default {
 
             showProjectColor: true,
             projectCreateColor: false,
-            projectViewColor: false,
+            projectViewColor: false
         }
     },
 
@@ -90,6 +98,7 @@ export default {
                 this.displayDashboard = true
                 this.displayCategory = false
                 this.displayProjects = false
+                this.displayOrder = false
             } else {
                 this.displayDashboard = true
             }
@@ -100,6 +109,7 @@ export default {
                 this.displayDashboard = false
                 this.displayCategory = true
                 this.displayProjects = false
+                this.displayOrder = false
             } else {
                 this.displayCategory = true
             }
@@ -124,6 +134,7 @@ export default {
                 this.displayDashboard = false
                 this.displayCategory = false
                 this.displayProjects = true
+                this.displayOrder = false
             } else {
                 this.displayProjects = true
             }
@@ -141,6 +152,17 @@ export default {
             this.showProjectColor = false
             this.projectCreateColor = false
             this.projectViewColor = true
+        },
+
+        showOrders() {
+            if(this.displayOrder == false) {
+                this.displayDashboard = false
+                this.displayCategory = false
+                this.displayProjects = false
+                this.displayOrder = true
+            } else {
+                this.displayOrder = true
+            }
         },
 
         getLogout() {

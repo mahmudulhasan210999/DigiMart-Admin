@@ -8,15 +8,15 @@
 
                     <DataTable ref="dt" :value="categories" dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,15]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Categories" responsiveLayout="scroll">
 
-                        <Column field="serial" header="#" style="width: 10%">
+                        <Column field="serial" header="#" style="width:10rem">
                             <template #body="{data}">
                                 {{ categories.indexOf(data) + 1 }}
                             </template>
                         </Column>
 
-                        <Column field="name" header="Name" :sortable="true" style="max-width:20rem"></Column>
+                        <Column field="name" header="Name" :sortable="true" style="width:30rem"></Column>
 
-                        <Column :exportable="false" header="Status" style="max-width:15rem">
+                        <Column :exportable="false" header="Status" style="width:20rem">
                             <template #body="{data}">
                                 <div class="pl-2">
                                     <i @click="toggleCategoryStatus(data.id)" v-if="data.status == true" class="pi pi-check p-1 text-secondary-green border rounded cursor-pointer"></i>
@@ -25,11 +25,11 @@
                             </template>
                         </Column>
 
-                        <Column header="Action" :exportable="false" style="max-width:8rem">
+                        <Column header="Action" :exportable="false" style="width:8rem">
                             <template #body="slotProps">
                                 <div class="flex">
-                                    <div class="">
-                                        <button @click="editCategory(slotProps.data)" class="bg-secondary hover:bg-primary rounded-full w-9 h-9"><i class="pi pi-pencil" style="font-size: 1rem; color: white;"></i></button>
+                                    <div>
+                                        <Button @click="editCategory(slotProps.data)" icon="pi pi-pencil" class="p-button-rounded p-button-success"/>
                                     </div>
                                     <div class="ml-2">
                                         <Button @click="confirmDeleteCategory(slotProps.data)" icon="pi pi-trash" class="p-button-rounded p-button-danger" />

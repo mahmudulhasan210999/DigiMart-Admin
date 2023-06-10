@@ -3,13 +3,15 @@ import login from './modules/login'
 import dashboard from './modules/dashboard'
 import category from './modules/category'
 import products from './modules/products'
+import orders from './modules/orders'
 
 export default createStore({
     modules: {
         login,
         dashboard,
         category,
-        products
+        products,
+        orders
     },
 
     state () {

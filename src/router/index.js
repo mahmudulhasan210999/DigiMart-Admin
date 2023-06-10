@@ -10,6 +10,8 @@ import ProductsCreate from '../views/products/create/index.vue'
 import ProductsView from '../views/products/view/index.vue'
 import ProductsEdit from '../views/products/edit/[id].vue'
 
+import Orders from '../views/orders/index.vue'
+
 const routes = [
     {
         path: '/login',
@@ -97,6 +99,17 @@ const routes = [
             login_required: true,
             hideSidebar: false,
             isProjectOpen: true
+        }
+    },
+
+    {
+        path: '/orders',
+        name: 'Orders',
+        component: Orders,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isOrderOpen: true
         }
     }
 ]

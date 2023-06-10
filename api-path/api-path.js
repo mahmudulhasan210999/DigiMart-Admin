@@ -21,6 +21,11 @@ const V1API = {
     'delete_product': host + '/api/products/delete/', 
     'toggle_product_status': host + '/api/products/status/',
     'toggle_product_featured': host + '/api/products/toggle-featured/',
+
+    // Orders
+    'get_orders': host + '/api/order/list',
+    'toggle_order_status': host + '/api/order/edit-order-status/',
+    'toggle_delivery_status': host + '/api/order/edit-delivery-status/',
 }
 
 export default V1API;

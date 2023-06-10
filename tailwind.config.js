@@ -7,16 +7,11 @@ module.exports = {
     theme: {
         extend: {},
         colors: {
+            'utm': '#9b3037',
             'primary': '#6b7280',
             'secondary': '#e5e7eb',
             'background': '#f3f4f6',
 
-            // 'primary': '#474747',
-            // 'secondary': '#f3f4f6',
-            // 'background': '#e5e7eb',
-
-            // 'primary': '#151921',
-            // 'secondary': '#f28121',
             'secondary-green': '#00a450', // delete
             'dsalfkjdl': '#474747',
 
@@ -24,6 +19,8 @@ module.exports = {
             'orange-300': '#fed7aa',
 
             'red-500': '#ef4444',
+            'blue-500': '#3b82f6',
+            'yellow-500': '#eab308',
 
             'gray-200': '#e5e7eb',
             'gray-300': '#d1d5db',
