@@ -10,7 +10,11 @@ import ProductsCreate from '../views/products/create/index.vue'
 import ProductsView from '../views/products/view/index.vue'
 import ProductsEdit from '../views/products/edit/[id].vue'
 
+import StuProducts from '../views/students-products/index.vue'
+
 import Orders from '../views/orders/index.vue'
+
+import Users from '../views/user-list/index.vue'
 
 const routes = [
     {
@@ -103,6 +107,17 @@ const routes = [
     },
 
     {
+        path: '/students-products',
+        name: 'StuProducts',
+        component: StuProducts,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isStuProdOpen: true
+        }
+    },
+
+    {
         path: '/orders',
         name: 'Orders',
         component: Orders,
@@ -110,6 +125,17 @@ const routes = [
             login_required: true,
             hideSidebar: false,
             isOrderOpen: true
+        }
+    },
+
+    {
+        path: '/user-list',
+        name: 'Users',
+        component: Users,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isUserOpen: true
         }
     }
 ]

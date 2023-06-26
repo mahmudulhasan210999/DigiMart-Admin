@@ -6,49 +6,34 @@
                 <p class="text-left text-xl font-semibold pb-6">View Orders</p>
                 <DataTable ref="dt" :value="orders" dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,15]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} orders" responsiveLayout="scroll">
 
-                    <Column field="serial" header="#" style="width:2rem">
+                    <Column field="serial" header="#" style="width:5rem">
                         <template #body="{data}">
                             {{ orders.indexOf(data) + 1 }}
                         </template>
                     </Column>
 
-                    <Column header="Customer" :sortable="true" style="width:10rem">
+                    <Column header="Customer" :sortable="true" style="width:19rem">
                         <template #body="{data}">
-                            <p>{{ data.user.first_name }} {{ data.user.last_name }}</p>
-                        </template>
-                    </Column>
-
-                    <Column header="Address" :sortable="true" style="width:14rem">
-                        <template #body="{data}">
-                            <div>
-                                <p>{{ data.user.additional_info.address }}</p> 
-                                <p>City: {{ data.user.additional_info.city }}</p>
+                            <div class="flex flex-col">
+                                <p>{{ data.user.first_name }} {{ data.user.last_name }}</p>
+                                <button class="update-button w-28" @click="getCustomerDetails(data.user)">View Details</button>
                             </div>
                         </template>
                     </Column>
 
-                    <Column :exportable="false" header="Contact" :sortable="true" style="width:12rem">
-                        <template #body="{data}">
-                           <div>
-                                <p>{{ data.user.email }}</p>
-                                <p>{{ data.user.additional_info.phone_no }}</p>
-                           </div>
-                        </template>
-                    </Column>
-
-                    <Column header="Date" :sortable="true" style="width:14rem">
+                    <Column header="Date" :sortable="true" style="width:13rem">
                         <template #body="{data}">
                             <p>{{ getDateFormat(data.created_at) }}</p>
                         </template>
                     </Column>
 
-                    <Column :exportable="false" header="Product" :sortable="true" style="width:10rem">
+                    <Column :exportable="false" header="Product" :sortable="true" style="width:17rem">
                         <template #body="{data}">
                             <button class="update-button" @click="getProductList(data.orderitem_set)">View Products</button>
                         </template>
                     </Column>
 
-                    <Column header="Total" :sortable="true" style="width:10rem">
+                    <Column header="Total" :sortable="true" style="width:15rem">
                         <template #body="{data}">
                             <p>RM {{ data.total_price }}</p>
                         </template>
@@ -114,6 +99,28 @@
                         </Column>
 
                     </DataTable>
+                </div>
+            </Dialog>
+
+            <!-- Customer Dialog -->
+            <Dialog v-model:visible="customer_dialog" :style="{width: '520px'}" header="Customer Details" :modal="true">
+                <div class="w-full flex flex-col">
+                   <div class="flex pb-4">
+                        <p class="w-28">Name:</p>
+                        <p class="font-semibold">{{ customer_details.first_name }} {{ customer_details.last_name }}</p>
+                   </div>
+                   <div class="flex pb-4">
+                        <p class="w-28">Phone No:</p>
+                        <p class="font-semibold">{{ customer_details.additional_info.phone_no }}</p>
+                   </div>
+                   <div class="flex pb-4">
+                        <p class="w-28">Email:</p>
+                        <p class="font-semibold">{{ customer_details.email }}</p>
+                   </div>
+                   <div class="flex pb-4">
+                        <p class="w-28">Address:</p>
+                        <p class="font-semibold">{{ customer_details.additional_info.address }}, <br/> City: {{ customer_details.additional_info.city }}</p>
+                   </div>
                 </div>
             </Dialog>
 
@@ -199,6 +206,8 @@ export default {
             submitted: false,
             product_list: null,
             product_dialog: false,
+            customer_details: null,
+            customer_dialog: false,
             order_id: null,
             order_status: null,
             order_statuses: [
@@ -298,6 +307,11 @@ export default {
         getProductList(product) {
             this.product_list = product
             this.product_dialog = true
+        },
+
+        getCustomerDetails(customer) {
+            this.customer_details = customer
+            this.customer_dialog = true
         }
 
         // confirmDeleteOrder (order) {

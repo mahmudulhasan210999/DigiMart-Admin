@@ -11,7 +11,7 @@
             <!-- Dashboard -->
             <div class="my-3">
                 <router-link to="/">
-                    <p @click="showDashboard" :class="{'clicked': $route.meta.isDashboardOpen || displayDashboard}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex"><i class="pi pi-home pr-5" style="font-size: 1.2rem"></i>Dashboard</p>
+                    <p @click="showDashboard" :class="{'clicked': $route.meta.isDashboardOpen || displayDashboard}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-home pr-5" style="font-size: 1.2rem"></i>Dashboard</p>
                 </router-link>
             </div>
 
@@ -57,10 +57,24 @@
                 </div>
             </div>
 
+            <!-- Students Products -->
+            <div class="my-3">
+                <router-link to="/students-products">
+                    <p @click="showStudentsProducts" :class="{'clicked': $route.meta.isStuProdOpen || displayStuProd}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-shield pr-5" style="font-size: 1.2rem"></i>Student's Product</p>
+                </router-link>
+            </div>
+
             <!-- Orders -->
             <div class="my-3">
                 <router-link to="/orders">
-                    <p @click="showOrders" :class="{'clicked': $route.meta.isOrderOpen || displayOrder}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex"><i class="pi pi-shopping-cart pr-5" style="font-size: 1.2rem"></i>Orders</p>
+                    <p @click="showOrders" :class="{'clicked': $route.meta.isOrderOpen || displayOrder}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-shopping-cart pr-5" style="font-size: 1.2rem"></i>Orders</p>
+                </router-link>
+            </div>
+
+            <!-- User List -->
+            <div class="my-3">
+                <router-link to="/user-list">
+                    <p @click="showUsers" :class="{'clicked': $route.meta.isUserOpen || displayUser}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-user pr-5" style="font-size: 1.2rem"></i>User List</p>
                 </router-link>
             </div>
         </div>
@@ -81,6 +95,8 @@ export default {
             displayCategory: false,
             displayProjects: false,
             displayOrder: false,
+            displayStuProd: false,
+            displayUser: false,
             
             showCategoryColor: true,
             categoryCreateColor: false,
@@ -99,6 +115,8 @@ export default {
                 this.displayCategory = false
                 this.displayProjects = false
                 this.displayOrder = false
+                this.displayStuProd = false
+                this.displayUser = false
             } else {
                 this.displayDashboard = true
             }
@@ -110,6 +128,8 @@ export default {
                 this.displayCategory = true
                 this.displayProjects = false
                 this.displayOrder = false
+                this.displayStuProd = false
+                this.displayUser = false
             } else {
                 this.displayCategory = true
             }
@@ -135,6 +155,8 @@ export default {
                 this.displayCategory = false
                 this.displayProjects = true
                 this.displayOrder = false
+                this.displayStuProd = false
+                this.displayUser = false
             } else {
                 this.displayProjects = true
             }
@@ -160,8 +182,36 @@ export default {
                 this.displayCategory = false
                 this.displayProjects = false
                 this.displayOrder = true
+                this.displayStuProd = false
+                this.displayUser = false
             } else {
                 this.displayOrder = true
+            }
+        },
+
+        showStudentsProducts() {
+            if(this.displayStuProd == false) {
+                this.displayDashboard = false
+                this.displayCategory = false
+                this.displayProjects = false
+                this.displayOrder = false
+                this.displayStuProd = true
+                this.displayUser = false
+            } else {
+                this.displayStuProd = true
+            }
+        },
+
+        showUsers() {
+            if(this.displayUser == false) {
+                this.displayDashboard = false
+                this.displayCategory = false
+                this.displayProjects = false
+                this.displayOrder = false
+                this.displayStuProd = false
+                this.displayUser = true
+            } else {
+                this.displayUser = true
             }
         },
 

@@ -4,6 +4,7 @@ import dashboard from './modules/dashboard'
 import category from './modules/category'
 import products from './modules/products'
 import orders from './modules/orders'
+import students from './modules/students'
 
 export default createStore({
     modules: {
@@ -11,7 +12,8 @@ export default createStore({
         dashboard,
         category,
         products,
-        orders
+        orders,
+        students
     },
 
     state () {

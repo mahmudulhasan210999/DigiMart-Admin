@@ -1,9 +1,9 @@
 <template>
     <div class="flex">
-        <div :class="!$route.meta.hideSidebar ? 'w-1/6' : 'w-0'">
+        <div :class="!$route.meta.hideSidebar ? 'w-1/5' : 'w-0'">
             <Sidebar v-if="!$route.meta.hideSidebar" />
         </div>
-        <div :class="!$route.meta.hideSidebar ? 'w-5/6' : 'w-full'">
+        <div :class="!$route.meta.hideSidebar ? 'w-4/5' : 'w-full'">
             <router-view></router-view>
         </div>
     </div>
