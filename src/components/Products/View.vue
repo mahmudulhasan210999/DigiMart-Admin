@@ -14,15 +14,9 @@
 
                     <Column field="name" header="Name" :sortable="true" style="min-width:15rem"></Column>
 
-                    <Column :exportable="false" header="Image" :sortable="true" style="min-width:8rem">
+                    <Column :exportable="false" header="Image" :sortable="true" style="min-width:10rem">
                         <template #body="{data}">
                             <img class="h-16" :src="data.images[0]" alt="">
-                        </template>
-                    </Column>
-
-                    <Column header="Offer Price" :sortable="true" style="min-width:10rem">
-                        <template #body="{data}">
-                            <p>RM {{ data.offer_price }}</p>
                         </template>
                     </Column>
 

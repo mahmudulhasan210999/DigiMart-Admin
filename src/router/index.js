@@ -13,6 +13,7 @@ import ProductsEdit from '../views/products/edit/[id].vue'
 import StuProducts from '../views/students-products/index.vue'
 
 import Orders from '../views/orders/index.vue'
+import Invoice from '../views/orders/invoice/[id].vue'
 
 import Users from '../views/user-list/index.vue'
 
@@ -121,6 +122,17 @@ const routes = [
         path: '/orders',
         name: 'Orders',
         component: Orders,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isOrderOpen: true
+        }
+    },
+
+    {
+        path: '/orders/invoice/:id',
+        name: 'Invoice',
+        component: Invoice,
         meta: {
             login_required: true,
             hideSidebar: false,

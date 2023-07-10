@@ -68,14 +68,12 @@ const actions = {
                 name: payload.name,
                 category: payload.category,
                 sell_price: payload.sell_price,
-                offer_price: payload.offer_price,
                 featured: payload.featured,
                 hot_items: payload.hot_items,
                 on_sale: payload.on_sale,
                 product_image: [payload.product_image],
                 status: payload.status,
                 description: payload.description,
-                tags: payload.tags,
                 unit: payload.unit,
             }
             , config).then(result => {
@@ -134,7 +132,7 @@ const actions = {
             {
                 headers:  { 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }    
             }
-        let response = await axios.patch(V1API.edit_product + payload.pid, 
+        let response = await axios.post(V1API.edit_product + payload.pid, 
             {
                 name: payload.name,
                 status: payload.status,
@@ -143,10 +141,8 @@ const actions = {
                 on_sale: payload.on_sale,
                 hot_items: payload.hot_items,
                 sell_price: payload.sell_price,
-                offer_price: payload.offer_price,
                 description: payload.description,
-                tags: payload.tags,
-                images: payload.images,
+                product_image: payload.images,
                 unit: 1
             }
             ,config).then(result => {

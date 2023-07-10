@@ -60,13 +60,15 @@
                         </template>
                     </Column>
 
-                    <!-- <Column header="Actions" :exportable="false" style="min-width:8rem">
+                    <Column header="Action" :exportable="false" style="min-width:12rem">
                         <template #body="slotProps">
                             <div class="flex">
-                                <Button icon="pi pi-trash" class="p-button-rounded p-button-danger" @click="confirmDeleteOrder(slotProps.data)" />
+                                <router-link :to="{ path:'/orders/invoice/' + slotProps.data.id }">
+                                    <Button label="Generate Invoice" class="p-button-rounded p-button-primary" />
+                                </router-link>
                             </div>
                         </template>
-                    </Column> -->
+                    </Column>
                 </DataTable>
             </div>
 

@@ -13,4 +13,6 @@ import 'primeicons/primeicons.css'                      //icons
 import ToastService from 'primevue/toastservice';
 import ckeditor from "@ckeditor/ckeditor5-vue";
 
-createApp(App).use(router).use(store).use(PrimeVue).use(ToastService).use(ckeditor).mount('#app')
+import print from 'vue3-print-nb'
+
+createApp(App).use(router).use(store).use(PrimeVue).use(ToastService).use(ckeditor).use(print).mount('#app')

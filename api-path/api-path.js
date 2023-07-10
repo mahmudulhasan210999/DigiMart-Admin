@@ -1,7 +1,7 @@
 var host = "https://digimart.samiur.me";
 
 const V1API = {
-    'get_login': host + '/api/auth/token',
+    'get_login': host + '/api/auth/token/admin',
 
     // User List
     'get_user_list': host + '/api/auth/user/list',
@@ -34,6 +34,7 @@ const V1API = {
     'get_orders': host + '/api/order/list',
     'toggle_order_status': host + '/api/order/edit-order-status/',
     'toggle_delivery_status': host + '/api/order/edit-delivery-status/',
+    'get_invoice': host + '/api/order/details/',
 }
 
 export default V1API;

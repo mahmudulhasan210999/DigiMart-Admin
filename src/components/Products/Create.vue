@@ -29,18 +29,14 @@
                     </div>
 
                     <div class="pb-4 flex w-full">
-                        <div class="w-1/2 pr-3 flex">
-                            <div class="pr-2 w-1/2">
+                        <div class="w-1/3 pr-3 flex">
+                            <div class="pr-2 w-full">
                                 <p class="pb-1 text-gray-500 ">Regular Price</p>
-                                <InputText type="text" class="w-full dropdown-height" v-model="product.sell_price" placeholder="e.g: 50000" />
-                            </div>
-                            <div class="w-1/2 pl-2">
-                                <p class="pb-1 text-gray-500 ">Offer Price</p>
-                                <InputText type="text" class="w-full dropdown-height" v-model="product.offer_price" placeholder="e.g: 50000" />
+                                <InputText type="text" class="w-full dropdown-height" v-model="product.sell_price" placeholder="e.g: 5000" />
                             </div>
                         </div>
 
-                        <div class="w-1/2 pl-3 flex">
+                        <div class="w-2/3 flex">
                             <div class="w-1/4">
                                 <p class="pb-1 text-gray-500 ">Status</p>
                                 <ToggleButton v-model="product.status" onIcon="pi pi-check" offIcon="pi pi-times" class="w-full dropdown-height" aria-label="Confirmation" />
@@ -72,20 +68,11 @@
                         </div>
                     </div>
 
-                    <div class="pb-4">
+                    <div>
                         <p class="pb-1 text-gray-500">Description</p>
                         <ckeditor
                             :editor="editor"
                             v-model="product.description"
-                            :config="editorConfig"
-                        ></ckeditor>
-                    </div>
-
-                    <div class="">
-                        <p class="pb-1 text-gray-500">Tags</p>
-                        <ckeditor
-                            :editor="editor"
-                            v-model="product.tags"
                             :config="editorConfig"
                         ></ckeditor>
                     </div>
@@ -128,9 +115,7 @@ export default {
                 on_sale: false,
                 category: null,
                 sell_price: null,
-                offer_price: null,
                 description: "",
-                tags: "",
                 product_image: null,
                 unit: 1
             },
@@ -188,9 +173,7 @@ export default {
                     this.product.on_sale = false
                     this.product.category = null
                     this.product.sell_price = null
-                    this.product.offer_price = null
                     this.product.description = ""
-                    this.product.tags = ""
                     this.product.product_image = null
                 }
                 else {

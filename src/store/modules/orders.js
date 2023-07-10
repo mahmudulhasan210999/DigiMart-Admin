@@ -4,7 +4,8 @@ import V1API from '../../../api-path/api-path';
 const state = {
     orders: [],
     product_toggle_status: false,
-    product_toggle_featured: false
+    product_toggle_featured: false,
+    invoice: {}
 }
 
 const getters = {}
@@ -20,6 +21,10 @@ const mutations = {
 
     PRODUCT_FEATURED_TOGGLE (state, items) {
         state.product_toggle_featured = items
+    },
+
+    GET_INVOICE (state, item) {
+        state.invoice = item
     }
 }
 
@@ -61,6 +66,19 @@ const actions = {
             console.log(items)
             commit('PRODUCT_FEATURED_TOGGLE', items)
             dispatch('get_orders')
+            return result
+        })
+        return response
+    },
+
+    async getInvoice ({ commit }, payload) {
+        let config= {
+            headers:  { 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }    
+        }
+        
+        let response = await axios.get(V1API.get_invoice + payload, config).then(result => {
+            let item = result.data.data
+            commit('GET_INVOICE', item)
             return result
         })
         return response
