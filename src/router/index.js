@@ -17,6 +17,8 @@ import Invoice from '../views/orders/invoice/[id].vue'
 
 import Users from '../views/user-list/index.vue'
 
+import Admins from '../views/admin-list/index.vue'
+
 const routes = [
     {
         path: '/login',
@@ -148,6 +150,17 @@ const routes = [
             login_required: true,
             hideSidebar: false,
             isUserOpen: true
+        }
+    },
+
+    {
+        path: '/admin-list',
+        name: 'Admins',
+        component: Admins,
+        meta: {
+            login_required: true,
+            hideSidebar: false,
+            isAdminOpen: true
         }
     }
 ]

@@ -3,16 +3,16 @@
         <Toast :breakpoints="{'640px': {width: '80%', right: '0'}}" />
         <div class="p-6">
             <div class="bg-white p-5 rounded-lg">
-                <p class="text-left text-xl font-semibold pb-6">View User List</p>
-                <DataTable ref="dt" :value="users" dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,15]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} users" responsiveLayout="scroll">
+                <p class="text-left text-xl font-semibold pb-6">View Admin List</p>
+                <DataTable ref="dt" :value="admins" dataKey="id" :paginator="true" :rows="5" paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,15]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} users" responsiveLayout="scroll">
 
                     <Column field="serial" header="#" style="width:5rem">
                         <template #body="{data}">
-                            {{ users.indexOf(data) + 1 }}
+                            {{ admins.indexOf(data) + 1 }}
                         </template>
                     </Column>
 
-                    <Column header="Name" :sortable="true" style="width:13rem">
+                    <Column header="Name" :sortable="true" style="width:15rem">
                         <template #body="{data}">
                             <div>
                                 <p>{{ data.first_name }} {{ data.last_name }}</p>
@@ -20,7 +20,9 @@
                         </template>
                     </Column>
 
-                    <Column field="email" header="Email" :sortable="true" style="width:16rem"></Column>
+                    <Column field="username" header="Username" :sortable="true" style="width:12rem"></Column>
+
+                    <Column field="email" header="Email" :sortable="true" style="width:17rem"></Column>
 
                     <Column field="additional_info.phone_no" header="Phone No" :sortable="true" style="width:10rem"></Column>
 
@@ -54,12 +56,12 @@ export default {
 
     computed: {
         ...mapState ({
-            users: state => state.students.users
+            admins: state => state.login.admins
         })
     },
 
     mounted() {
-        this.$store.dispatch('students/get_user_list')
+        this.$store.dispatch('login/getAdminList')
     }
 }
 </script>

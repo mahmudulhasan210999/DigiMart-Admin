@@ -74,7 +74,14 @@
             <!-- User List -->
             <div class="my-3">
                 <router-link to="/user-list">
-                    <p @click="showUsers" :class="{'clicked': $route.meta.isUserOpen || displayUser}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-user pr-5" style="font-size: 1.2rem"></i>User List</p>
+                    <p @click="showUsers" :class="{'clicked': $route.meta.isUserOpen || displayUser}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-users pr-5" style="font-size: 1.2rem"></i>User List</p>
+                </router-link>
+            </div>
+
+            <!-- Admin List -->
+            <div class="my-3">
+                <router-link to="/admin-list"> 
+                    <p @click="showAdmins" :class="{'clicked': $route.meta.isAdminOpen || displayAdmin}" class="bg-background px-6 py-5 rounded-md font-semibold mb-2 flex items-center"><i class="pi pi-user-edit pr-5" style="font-size: 1.2rem"></i>Admin List</p>
                 </router-link>
             </div>
         </div>
@@ -97,6 +104,7 @@ export default {
             displayOrder: false,
             displayStuProd: false,
             displayUser: false,
+            displayAdmin: false,
             
             showCategoryColor: true,
             categoryCreateColor: false,
@@ -117,6 +125,7 @@ export default {
                 this.displayOrder = false
                 this.displayStuProd = false
                 this.displayUser = false
+                this.displayAdmin = false
             } else {
                 this.displayDashboard = true
             }
@@ -130,6 +139,7 @@ export default {
                 this.displayOrder = false
                 this.displayStuProd = false
                 this.displayUser = false
+                this.displayAdmin = false
             } else {
                 this.displayCategory = true
             }
@@ -157,6 +167,7 @@ export default {
                 this.displayOrder = false
                 this.displayStuProd = false
                 this.displayUser = false
+                this.displayAdmin = false
             } else {
                 this.displayProjects = true
             }
@@ -184,6 +195,7 @@ export default {
                 this.displayOrder = true
                 this.displayStuProd = false
                 this.displayUser = false
+                this.displayAdmin = false
             } else {
                 this.displayOrder = true
             }
@@ -197,6 +209,7 @@ export default {
                 this.displayOrder = false
                 this.displayStuProd = true
                 this.displayUser = false
+                this.displayAdmin = false
             } else {
                 this.displayStuProd = true
             }
@@ -210,8 +223,23 @@ export default {
                 this.displayOrder = false
                 this.displayStuProd = false
                 this.displayUser = true
+                this.displayAdmin = false
             } else {
                 this.displayUser = true
+            }
+        },
+
+        showAdmins() {
+            if(this.displayAdmin == false) {
+                this.displayDashboard = false
+                this.displayCategory = false
+                this.displayProjects = false
+                this.displayOrder = false
+                this.displayStuProd = false
+                this.displayUser = false
+                this.displayAdmin = true
+            } else {
+                this.displayAdmin = true
             }
         },
 

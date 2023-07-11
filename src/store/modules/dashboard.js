@@ -14,7 +14,7 @@ const mutations = {
 }
 const actions = {
     get_items_count ({ commit }) {
-        axios.get(V1API.get_items_count).then(result => {
+        axios.get(V1API.get_count).then(result => {
             let items = result.data
             commit('SET_ITEMS_COUNT', items)
         })

@@ -4,7 +4,8 @@ import V1API from '../../../api-path/api-path';
 const state = {
     access_token: null,
     refresh_token: null,
-    isLoggedIn: false
+    isLoggedIn: false,
+    admins: []
 }
 
 const getters = {}
@@ -22,6 +23,10 @@ const mutations = {
 
     SET_LOGIN_STATUS(state, status) {
         state.isLoggedIn = status;
+    },
+
+    GET_ADMIN_LIST(state, items) {
+        state.admins = items;
     }
 }
 
@@ -47,6 +52,38 @@ const actions = {
             console.log(error)
         }) 
         return response      
+    },
+
+    async getRegister({ commit, dispatch }, payload) {
+        let response = await axios.post(V1API.register_admin, {
+            first_name: payload.fname,
+            last_name: payload.lname,
+            username: payload.username,
+            gender: payload.gender,
+            email: payload.email,
+            address: payload.address,
+            city: payload.city,
+            phone_no: payload.phone,
+            password: payload.password,
+            password2: payload.confirm_password
+           
+        }).then(result => {
+            return result
+        })
+        return response
+    },
+
+    async getAdminList ({ commit }) {
+        let config= {
+            headers:  { 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }    
+        }
+        
+        let response = await axios.get(V1API.get_admin_list, config).then(result => {
+            let items = result.data.data
+            commit('GET_ADMIN_LIST', items)
+            return result
+        })
+        return response
     },
 }
 
